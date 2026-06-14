@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTC Breweries App</title>
+
+    <link<link rel="stylesheet" href="css/style.css">
+        
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>PTC Breweries App</h1>
+
+        <form method="GET">
+
+            <label for="country">Country:</label>
+
+            <input type="text"
+                   id="country"
+                   name="country"
+                   placeholder="e.g. United States"
+                   value="{{ selected_country }}">
+
+            <label for="type">Brewery Type:</label>
+
+            <input type="text"
+                   id="type"
+                   name="type"
+                   placeholder="e.g. micro"
+                   value="{{ selected_type }}">
+
+            <button type="submit">Filter</button>
+
+            <a href="/">
+                <button type="button">Reset</button>
+            </a>
+
+        </form>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Type</th>
+                    <th>City</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for brewery in breweries %}
+
+                <tr>
+
+                    <td>{{ brewery.get("name", "N/A") }}</td>
+
+                    <td>{{ brewery.get("country", "N/A") }}</td>
+
+                    <td>{{ brewery.get("brewery_type", "N/A") }}</td>
+
+                    <td>{{ brewery.get("city", "N/A") }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+</html>
